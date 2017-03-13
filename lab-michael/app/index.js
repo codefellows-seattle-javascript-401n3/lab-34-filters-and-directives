@@ -39,3 +39,10 @@ context.keys().forEach( key => {
   let module = context(key);
   ngAuthFront.component(name, module);
 });
+
+context = require.context('./filters/', true, /\.js$/);
+context.keys().forEach( key => {
+  let name = camelcase(path.basename(key, '.js'));
+  let module = context(key);
+  ngAuthFront.filter(name, module);
+});
