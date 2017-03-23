@@ -3,12 +3,12 @@
     <hr />
     <p>
       <span class="item-label">Name:</span>
-      <span>{{ galleryItemCtrl.gallery.name }}</span>
+      <span>{{ galleryItemCtrl.gallery.name | uppercase }}</span>
     </p>
 
     <div>
       <span class="item-label">Description:</span>
-      <span>{{ galleryItemCtrl.gallery.desc }}</span>
+      <span>{{ galleryItemCtrl.gallery.desc | lowercase }}</span>
     </div>
   </div>
   <edit-gallery ng-if="galleryItemCtrl.showEditGallery" gallery="galleryItemCtrl.gallery"></edit-gallery>
