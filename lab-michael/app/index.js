@@ -41,7 +41,7 @@ context.keys().forEach( key => {
   ngAuthFront.component(name, module);
 });
 
-context = require.context('./filters/', true, /\.js$/);
+context = require.context('./filter/', true, /\.js$/);
 context.keys().forEach( key => {
   let name = camelcase(path.basename(key, '.js'));
   let module = context(key);
