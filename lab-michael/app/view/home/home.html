@@ -9,7 +9,7 @@
 
       <div class="gallery-items-container">
         <gallery-item
-         ng-repeat="item in homeCtrl.galleries | fuzzySeach : homeCtrl.filterSearch | orderBy : 'asc'"
+         ng-repeat="item in homeCtrl.galleries | fuzzySearch : homeCtrl.filterSearch | orderBy : 'asc'"
          gallery="item"
          delete-done="homeCtrl.galleryDeleteDone(galleryData)"
          ng-click="homeCtrl.currentGallery = item">
