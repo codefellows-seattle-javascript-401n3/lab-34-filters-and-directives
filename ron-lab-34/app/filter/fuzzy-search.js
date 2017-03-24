@@ -1,23 +1,35 @@
-'use strict';
 
-module.exports = function() {
-  return function(galleries, str) {
-    if(!str) return galleries;
+'use strict'
 
-    // let pattern = `.*${str.split('').join('.*')}.*`;
-    let pattern = '.*' + str.split('').join('.*') + '.*';
-    let regExp = new RegExp(pattern);
+module.exports = function(){
+  return function(galleries, searchTerm){
+    let fuzzySearch = makeFuzzySearch(searchTerm);
+
     return galleries.filter(gallery => {
-      regExp.gallery.name
+      return fuzzySearch.test(gallery.name.toUpperCase());
     });
   };
 };
 
-//the below code is duncan's from slugram, comparing notes here...
-// module.exports = function(input){
-//   debug(`creating fuzzy regex from ${input}`)
-//   if (!input || typeof input !== 'string')
-//     return new RegExp('.*')
-//   let result = input.split('').join('.*')
-//   return new RegExp(`.*${result}.*`)
-// }
+function makeFuzzySearch(input){
+  if (!input) return /.*/
+  let fuzzyString = '.*' + input.toUpperCase().split('').join('.*') + '.*';
+  return new RegExp(fuzzyString);
+}
+
+// 'use strict';
+//
+//
+//
+// module.exports = function() {
+//   return function(galleries, str) {
+//     if(!str) return galleries;
+//
+//     let pattern = '.*' + str.split('').join('.*') + '.*';
+//     let regExp = new RegExp(pattern);
+//
+//     return galleries.filter(gallery => {
+//
+//     });
+//   };
+// };
